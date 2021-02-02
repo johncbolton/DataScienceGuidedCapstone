@@ -3780,22 +3780,9 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 116,
+   "execution_count": 117,
    "metadata": {},
-   "outputs": [
-    {
-     "ename": "AttributeError",
-     "evalue": "module 'pandas' has no attribute '_version_'",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-116-eeac033d08a8>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m     11\u001b[0m \u001b[0mbest_model\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mrf_grid_cv\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mbest_estimator_\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     12\u001b[0m \u001b[0mbest_model\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mversion\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;36m1.0\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 13\u001b[0;31m \u001b[0mbest_model\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpandas_version\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpd\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_version_\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     14\u001b[0m \u001b[0mbest_model\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mnumpy_version\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_version_\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     15\u001b[0m \u001b[0mbest_model\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msklearn_version\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0msklearn_version\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;32m~/opt/anaconda3/lib/python3.8/site-packages/pandas/__init__.py\u001b[0m in \u001b[0;36m__getattr__\u001b[0;34m(name)\u001b[0m\n\u001b[1;32m    256\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0m_SparseArray\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    257\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 258\u001b[0;31m         \u001b[0;32mraise\u001b[0m \u001b[0mAttributeError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf\"module 'pandas' has no attribute '{name}'\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    259\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    260\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mAttributeError\u001b[0m: module 'pandas' has no attribute '_version_'"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "#Code task 28#\n",
     "#This may not be \"production grade ML deployment\" practice, but adding some basic\n",
@@ -3809,8 +3796,8 @@
     "#Let's call this model version '1.0'\n",
     "best_model = rf_grid_cv.best_estimator_\n",
     "best_model.version = 1.0\n",
-    "best_model.pandas_version = pd._version_\n",
-    "best_model.numpy_version = np._version_\n",
+    "best_model.pandas_version = pd.__version__\n",
+    "best_model.numpy_version = np.__version__\n",
     "best_model.sklearn_version = sklearn_version\n",
     "best_model.X_columns = [col for col in X_train.columns]\n",
     "best_model.build_datetime = datetime.datetime.now()"
@@ -3818,9 +3805,18 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 118,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Directory ../models was created.\n",
+      "Writing file.  \"../models/ski_resort_pricing_model.pkl\"\n"
+     ]
+    }
+   ],
    "source": [
     "# save the model\n",
     "\n",
